@@ -149,16 +149,16 @@ class Block():
 
     def game_clear(self):   # ゲームクリア処理
         # ゲームクリアしたら画面中央に「GAME CLEAR」の文字を表示
+        image = 0
+        image_rect = 0
         for g in range(5):
             for r in range(4):
                 flag = False
-                iamge = 0
-                image_rect = 0
                 # txt = 0
                 # txt_rect = 0
                 if Block.y[g][r] >= 100:   # 加算後に100以上の数字ができたら
                     flag = True
-                    image = pg.image.load(f"fig/StageClear.PNG")
+                    image = pg.image.load(f"kadai06/block/StageClear.PNG")
                     image_rect = image.get_rect()
                     image_rect.center = 200, 250
                     # font = pg.font.Font(None,80)
@@ -199,10 +199,10 @@ def main():
           
         block.add_1(gy, ry)                          # 落下ブロックの加算
         block.add_2()                                # 既にあるブロックの加算
-        flag, txt, txt_rect = block.game_clear()     # ゲームクリアの判定
+        flag, image, image_rect = block.game_clear()     # ゲームクリアの判定
         if flag:   # ゲームクリアしたら
             screen.disp.fill((0,0,0))
-            screen.disp.blit(txt, txt_rect)
+            screen.disp.blit(image, image_rect)
             pg.display.update()
             clock.tick(0.5)
             return
