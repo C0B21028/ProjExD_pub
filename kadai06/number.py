@@ -152,16 +152,23 @@ class Block():
         for g in range(5):
             for r in range(4):
                 flag = False
-                txt = 0
-                txt_rect = 0
+                iamge = 0
+                image_rect = 0
+                # txt = 0
+                # txt_rect = 0
                 if Block.y[g][r] >= 100:   # 加算後に100以上の数字ができたら
                     flag = True
-                    font = pg.font.Font(None,80)
-                    txt = font.render("GAME CLEAR", True, (255,255,255))
-                    txt_rect = txt.get_rect()
-                    txt_rect.center = 200, 250
-                    return flag, txt, txt_rect
-        return flag, txt, txt_rect
+                    image = pg.image.load(f"fig/StageClear.PNG")
+                    image_rect = image.get_rect()
+                    image_rect.center = 200, 250
+                    # font = pg.font.Font(None,80)
+                    # txt = font.render("GAME CLEAR", True, (255,255,255))
+                    # txt_rect = txt.get_rect()
+                    # txt_rect.center = 200, 250
+                    return flag, image, image_rect
+                    #  return flag, txt, txt_rect
+        return flag, image, image_rect
+        # return flag, txt, txt_rect
 
 
 def main():
