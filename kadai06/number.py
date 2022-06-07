@@ -3,16 +3,16 @@ import sys
 import random
 
 
-class Screen:
-    def __init__(self, wh, title):
+class Screen:   # 画面の作成
+    def __init__(self, wh, title):   # 初期化メゾット
         pg.display.set_caption(title)
         self.width, self.height = wh                                 # (400,500)
         self.disp = pg.display.set_mode((self.width, self.height))   # 画面用Surface
         self.rect = self.disp.get_rect()                             # 画面用Rect
 
 
-class Line:
-    def __init__(self, color, wh):
+class Line:   # ブロックの3段目上に表示される黄色い線の作成
+    def __init__(self, color, wh):   # 初期化メゾット
         self.image = pg.Surface(wh)                    # 線Surface
         pg.draw.rect(self.image,color,(0,195,400,5))   # 縦5、横400の四角形を作成
         self.rect = self.image.get_rect()              # 線Rect
@@ -28,7 +28,7 @@ class Block():
          [0,0,0,0]]
     # それぞれのマスにブロックがないときは0,あるときは入っているブロックの番号
 
-    def __init__(self, n, r, xy):
+    def __init__(self, n, r, xy):   # 初期化メゾット
         # n:ブロックの番号，r:拡大率，xy:初期配置座標
         self.n = n  
         self.i = 0                                                  # インデクス番号を0に初期化
@@ -171,7 +171,7 @@ class Block():
         # return flag, txt, txt_rect
 
 
-def main():
+def main():   # メインプログラム
     clock = pg.time.Clock()
 
     #BGM   #C0B21042
