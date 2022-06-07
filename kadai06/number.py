@@ -19,8 +19,8 @@ class Line:
 
 
 class Block():
-    itix_list = [50,150,250,350]       # 画像用Rectのx座標
-    itiy_list = [50,150,250,350,450]   # 画像用Rectのy座標
+    ITIX_LIST = [50,150,250,350]       # 画像用Rectのx座標
+    ITIY_LIST = [50,150,250,350,450]   # 画像用Rectのy座標
     y = [[0,0,0,0],     
          [0,0,0,0],
          [0,0,0,0],
@@ -51,19 +51,19 @@ class Block():
         if 350 < self.rect.centery <= 450:   # もし中央のy座標が350よりも大きく、450以下だったら
             g = 4
         if event.type == pg.KEYDOWN and event.key == pg.K_RIGHT:       # →が押されたら(右移動)
-            self.i = Block.itix_list.index(self.rect.centerx)          # 今のインデクス番号を取得
+            self.i = Block.ITIX_LIST.index(self.rect.centerx)          # 今のインデクス番号を取得
             if self.i <= 2 and Block.y[g][self.i+1] == 0:              # インデクス番号が2以下かつ移動先にブロックがなかったら
                 self.i += 1                                            # インデクス番号を1大きくする
-            self.rect.centerx = Block.itix_list[self.i]                # 画像用Rectのx座標を変更する
+            self.rect.centerx = Block.ITIX_LIST[self.i]                # 画像用Rectのx座標を変更する
         if event.type == pg.KEYDOWN and event.key == pg.K_LEFT:        # ←が押されたら(左移動)
-            self.i = Block.itix_list.index(self.rect.centerx)          # 今のインデクス番号を取得
+            self.i = Block.ITIX_LIST.index(self.rect.centerx)          # 今のインデクス番号を取得
             if self.i >= 1 and Block.y[g][self.i-1] == 0:              # インデクス番号が1以上かつ移動先にブロックがなかったら
                 self.i -= 1                                            # インデクス番号を1小さくする
-            self.rect.centerx = Block.itix_list[self.i]                # 画像用Rectのx座標を変更する
+            self.rect.centerx = Block.ITIX_LIST[self.i]                # 画像用Rectのx座標を変更する
 
     def move_y(self):  # 縦移動。ブロックが積まれたところのインデクス番号を返す。
         for g in range(4):
-            if Block.y[g+1][self.i] != 0 and self.rect.centery == Block.itiy_list[g]:   
+            if Block.y[g+1][self.i] != 0 and self.rect.centery == Block.ITIY_LIST[g]:   
             # 落ちてくるブロックの真下に既にブロックがあったら、その上に落ちてきたものを表示
                 Block.y[g][self.i] = self.n   # ブロックの位置のリストの要素を画像の番号に変更
                 return  g, self.i
@@ -144,7 +144,7 @@ class Block():
                     self.stack_image = pg.image.load(f"kadai06/block/{Block.y[g][r]}.PNG")
                     self.stack_image = pg.transform.rotozoom(self.stack_image, 0, 0.7)
                     self.stack_rect = self.stack_image.get_rect()
-                    self.stack_rect.center = (Block.itix_list[r],Block.itiy_list[g])   # 描写する場所はインデクス番号で指定
+                    self.stack_rect.center = (Block.ITIX_LIST[r],Block.ITIY_LIST[g])   # 描写する場所はインデクス番号で指定
                     screen.disp.blit(self.stack_image, self.stack_rect)
 
     def game_clear(self):   # ゲームクリア処理
@@ -196,8 +196,8 @@ def main():
         for g in range(5):
             for r in range(4):
                 if (block.y[g][r] != 0 
-                        and block.rect.centerx == block.itix_list[r] 
-                        and block.rect.centery == block.itiy_list[g]):    
+                        and block.rect.centerx == block.ITIX_LIST[r] 
+                        and block.rect.centery == block.ITIY_LIST[g]):    
                 # 次のブロックを出す。Blockクラス内にあるリストyの要素が0でない、
                 # かつ、ブロック用Rectの座標が積んだブロックの中央にきたとき
                     n = random.randrange(10,31,10)   # 10～30のブロック画像をランダムに指定
