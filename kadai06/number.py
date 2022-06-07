@@ -176,7 +176,7 @@ def main():
 
     #BGM   #C0B21042
     pg.mixer.init()
-    pg.mixer.music.load('BGM/Dance_With_Powder.mp3')
+    pg.mixer.music.load('kadai06/BGM/たぬきちの冒険.mp3')
     pg.mixer.music.play(-1)
     pg.mixer.music.set_volume(0.1)
 
@@ -209,7 +209,7 @@ def main():
         if flag:   # ゲームクリアしたら
             #BGMを初期化し、GAMECLEAR効果音を鳴らす  #C0B21042
             pg.mixer.init()
-            pg.mixer.music.load('BGM/GAMECLEAR.mp3')
+            pg.mixer.music.load('kadai06/BGM/GAMECLEAR.mp3')
             pg.mixer.music.play()
             pg.mixer.music.set_volume(0.2)
             screen.disp.fill((0,0,0))
@@ -224,7 +224,7 @@ def main():
             if Block.y[1][r] != 0:   # 下から4段目にブロックが積まれたらGAMEOVER
                 #BGMを初期化し、GAMEOVER効果音を鳴らす  #C0B21042
                 pg.mixer.init()
-                pg.mixer.music.load('BGM/GAMEOVER.mp3')
+                pg.mixer.music.load('kadai06/BGM/GAMEOVER.mp3')
                 pg.mixer.music.play()
                 pg.mixer.music.set_volume(0.3)
                 screen.disp.fill((0,0,0))
