@@ -158,9 +158,12 @@ class Block():
                 # txt_rect = 0
                 if Block.y[g][r] >= 100:   # 加算後に100以上の数字ができたら
                     flag = True
+
+                    # C0B21080  # StageClearの画像を表示
                     image = pg.image.load(f"kadai06/block/StageClear.PNG")
                     image_rect = image.get_rect()
                     image_rect.center = 200, 250
+
                     # font = pg.font.Font(None,80)
                     # txt = font.render("GAME CLEAR", True, (255,255,255))
                     # txt_rect = txt.get_rect()
