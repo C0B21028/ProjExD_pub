@@ -167,6 +167,12 @@ class Block():
 def main():
     clock = pg.time.Clock()
 
+    #BGM   #C0B21042
+    pg.mixer.init()
+    pg.mixer.music.load('BGM/Dance_With_Powder.mp3')
+    pg.mixer.music.play(-1)
+    pg.mixer.music.set_volume(0.1)
+
     screen = Screen((400, 500), "100以上をつくろう!!")
     line = Line((255,255,0), (400,500))
     n = random.randrange(10,31,10)     # 10～30のブロック画像をランダムに指定
@@ -194,6 +200,11 @@ def main():
         block.add_2()                                # 既にあるブロックの加算
         flag, txt, txt_rect = block.game_clear()     # ゲームクリアの判定
         if flag:   # ゲームクリアしたら
+            #BGMを初期化し、GAMECLEAR効果音を鳴らす  #C0B21042
+            pg.mixer.init()
+            pg.mixer.music.load('BGM/GAMECLEAR.mp3')
+            pg.mixer.music.play()
+            pg.mixer.music.set_volume(0.2)
             screen.disp.fill((0,0,0))
             screen.disp.blit(txt, txt_rect)
             pg.display.update()
@@ -204,6 +215,11 @@ def main():
             if event.type == pg.QUIT: return   # ✕ボタンでmain関数から戻る
         for r in range(4):
             if Block.y[1][r] != 0:   # 下から4段目にブロックが積まれたらGAMEOVER
+                #BGMを初期化し、GAMEOVER効果音を鳴らす  #C0B21042
+                pg.mixer.init()
+                pg.mixer.music.load('BGM/GAMEOVER.mp3')
+                pg.mixer.music.play()
+                pg.mixer.music.set_volume(0.3)
                 screen.disp.fill((0,0,0))
                 font = pg.font.Font(None,80)
                 txt = font.render("GAME OVER", True, (255,255,255))
